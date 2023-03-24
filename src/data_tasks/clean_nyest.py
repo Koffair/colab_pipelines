@@ -4,10 +4,10 @@ import re
 import pandas as pd
 
 df = pd.read_csv("data/raw/nyest/contents.csv", sep=";")
-df.fillna('', inplace=True)
+df.fillna("", inplace=True)
 
-CLEANR = re.compile('<.*?>')
-CDATA = re.compile('\/\/\s&lt;!\[CDATA\[\n.*\n\/\/\s*\]\]&gt;')
+CLEANR = re.compile("<.*?>")
+CDATA = re.compile("\/\/\s&lt;!\[CDATA\[\n.*\n\/\/\s*\]\]&gt;")
 
 
 def clean_txt(txt):
@@ -20,8 +20,8 @@ def clean_txt(txt):
 
 def cleanhtml(raw_html):
     """Clean raw html page"""
-    cleaned_txt = clean_txt(html.escape(re.sub(CLEANR, ' ', raw_html)))
-    return re.sub(CDATA, ' ', cleaned_txt)
+    cleaned_txt = clean_txt(html.escape(re.sub(CLEANR, " ", raw_html)))
+    return re.sub(CDATA, " ", cleaned_txt)
 
 
 with open("data/interim/nyest.txt", "w") as outfile:

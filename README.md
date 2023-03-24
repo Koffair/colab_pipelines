@@ -1,4 +1,8 @@
 # colab_pipelines
+**WARNING**: You can run the notebooks on Colab, but
+some of the notebooks requires subscription. Have a look
+at the src folder and run most of the jobs on a local machine.
+More details below.
 
 # TODO:
 + write readme

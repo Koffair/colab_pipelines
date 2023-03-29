@@ -13,12 +13,17 @@ from sklearn.model_selection import train_test_split
 ########################################################################################################
 #####                               Getting some data                                              #####
 ########################################################################################################
+clip_prefix = "data/raw/cv-corpus-13.0-2023-03-09/hu/clips"
+
 df = pd.read_csv("data/raw/cv-corpus-13.0-2023-03-09/hu/validated.tsv", sep="\t")
 df = df[df["down_votes"] == 0]  # use only validated data without down_votes
+clips = df["path"]
+clips = [e for e in clips if os.path.isfile(os.path.join(clip_prefix, e)) and os.stat(os.path.join(clip_prefix, e)).st_size != 0]
+df = df[df["path"].isin(clips)]
+
 print(df.shape)  # 28891
 train, test = train_test_split(df, test_size=0.2)
 
-clip_prefix = "data/raw/cv-corpus-13.0-2023-03-09/hu/clips"
 trainx = zip(train["path"], train["sentence"])
 testx = zip(test["path"], test["sentence"])
 

@@ -26,7 +26,10 @@ shown as special cells in the notebooks.
 
 # Training a floret model
 ```bash
-../../opt/floret/floret cbow -dim 300 -minn 3 -maxn 6 -mode floret -hashCount 4 -bucket 50000 -input data/interim/huwiki.txt -output models/floret/huwiki/huwiki_vectors
+../../opt/floret/floret cbow -dim 300 -minn 3 -maxn 6 -mode floret -hashCount 4 -bucket 50000 -input data/interim/merged_corpus.txt -output models/lms/hufloret_
 ```
 
 # Training a KenLM language model
+```bash
+ ../../opt/kenlm/build/bin/lmplz -o 3 data/interim/merged_corpus.txt > models/lms/hu_kenlm.arpa
+```

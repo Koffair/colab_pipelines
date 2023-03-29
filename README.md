@@ -14,3 +14,19 @@ Team members can access the data via Google Drive. Click [here](https://drive.go
 + SST was trained on the latest [Hungarian Common Voice corpus](https://commonvoice.mozilla.org/)
 + For output correction we trained a floret model using the Hungarian sub-corpus of [OSCAR 2019](https://oscar-project.org/post/oscar-2019/) and 
 all the articles from [nyest.hu](https://www.nyest.hu/)
+
+# Running the scripts
+Scripts in the ```src``` folder are almost identical to the scripts in ```notebooks```.
+The main difference between the two version is that paths in the scripts are relative paths
+while the notebooks contains absolute paths on Google Drive.
+
+The other minor difference is that bash commands like unzipping and concatenating files are not
+presented in the scripts. Running command line utilities like ```floret``` and ```KenLM``` are
+shown as special cells in the notebooks.
+
+# Training a floret model
+```bash
+../../opt/floret/floret cbow -dim 300 -minn 3 -maxn 6 -mode floret -hashCount 4 -bucket 50000 -input data/interim/huwiki.txt -output models/floret/huwiki/huwiki_vectors
+```
+
+# Training a KenLM language model

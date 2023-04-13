@@ -13,6 +13,8 @@ from sklearn.model_selection import train_test_split
 ########################################################################################################
 #####                               Getting some data                                              #####
 ########################################################################################################
+# TODO: please update me according to the notebook
+# WARNING: do NOT use this script! it is completely out of date
 clip_prefix = "data/raw/cv-corpus-13.0-2023-03-09/hu/clips"
 
 df = pd.read_csv("data/raw/cv-corpus-13.0-2023-03-09/hu/validated.tsv", sep="\t")

@@ -24,12 +24,24 @@ The other minor difference is that bash commands like unzipping and concatenatin
 presented in the scripts. Running command line utilities like ```floret``` and ```KenLM``` are
 shown as special cells in the notebooks.
 
-# Training a floret model
+# Build language models
+Our merged corpus (nyest + OSCAR19) contains 4466526 lines. 
+```bash
+wc -l data/interim/merged_corpus.txt
+```
+On a single laptop/PC it
+takes ages to train a language model. You can take a sample from the corpus using
+the following command
+```bash
+shuf -n 1000 data/interim/merged_corpus.txt > data/interim/sample1000.txt
+```
+
+## Training a floret model
 ```bash
 ../../opt/floret/floret cbow -dim 300 -minn 3 -maxn 6 -mode floret -hashCount 4 -bucket 50000 -input data/interim/merged_corpus.txt -output models/lms/hufloret_
 ```
 
-# Training a KenLM language model
+## Training a KenLM language model
 ```bash
- ../../opt/kenlm/build/bin/lmplz -o 3 data/interim/merged_corpus.txt > models/lms/hu_kenlm.arpa
+ ../../opt/kenlm/build/bin/lmplz -o 3 < data/interim/merged_corpus.txt > models/lms/hu_kenlm.arpa
 ```

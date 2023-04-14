@@ -45,3 +45,6 @@ shuf -n 1000 data/interim/merged_corpus.txt > data/interim/sample1000.txt
 ```bash
  ../../opt/kenlm/build/bin/lmplz -o 3 < data/interim/merged_corpus.txt > models/lms/hu_kenlm.arpa
 ```
+```bash
+ ../../opt/kenlm/build/bin/build_binary models/lms/hu_kenlm_merged_corpus.arpa models/lms/hu_kenlm_merged_corpus.binary
+```

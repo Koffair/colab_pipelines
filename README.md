@@ -42,9 +42,18 @@ shuf -n 1000 data/interim/merged_corpus.txt > data/interim/sample1000.txt
 ```
 
 ## Training a KenLM language model
+First things first, we have to clean up our corpus, so it will
+contain only characters of the Hungarian alphabet.
+Run `src/data_tasks/preprocess_merged.py`. We need a vocabulary
+file too, let's generate it by running `**src/data_tasks/get_unigrams.py`
+
+Now, let's build a trigram model
 ```bash
- ../../opt/kenlm/build/bin/lmplz -o 3 < data/interim/merged_corpus.txt > models/lms/hu_kenlm.arpa
+../../opt/kenlm/build/bin/lmplz -o 4 < data/interim/merged_corpus_cleaned.txt > models/lms/hu_kenlm.arpa
 ```
+You have to modify the resulting language model since it doesn't contain a few types required by HF.
+Run `src/data_tasks/post_process_kenml.py`
+Let's make a smaller, binary version of the LM.
 ```bash
- ../../opt/kenlm/build/bin/build_binary models/lms/hu_kenlm_merged_corpus.arpa models/lms/hu_kenlm_merged_corpus.binary
+../../opt/kenlm/build/bin/build_binary models/lms/hu_kenlm_corrected.arpa models/lms/hu_kenlm.binary
 ```

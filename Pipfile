@@ -9,6 +9,9 @@ nltk = "*"
 huggingsound = "*"
 blingfire = "*"
 scikit-learn = "*"
+pyicu = "*"
+pyctcdecode = "*"
+kenlm = "*"
 
 [dev-packages]
 black = "*"

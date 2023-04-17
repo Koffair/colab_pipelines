@@ -1,12 +1,8 @@
 import os
 
 import pandas as pd
-from huggingsound import (
-    ModelArguments,
-    SpeechRecognitionModel,
-    TokenSet,
-    TrainingArguments,
-)
+from huggingsound import (ModelArguments, SpeechRecognitionModel, TokenSet,
+                          TrainingArguments)
 from nltk.tokenize import word_tokenize
 from sklearn.model_selection import train_test_split
 
@@ -20,7 +16,12 @@ clip_prefix = "data/raw/cv-corpus-13.0-2023-03-09/hu/clips"
 df = pd.read_csv("data/raw/cv-corpus-13.0-2023-03-09/hu/validated.tsv", sep="\t")
 df = df[df["down_votes"] == 0]  # use only validated data without down_votes
 clips = df["path"]
-clips = [e for e in clips if os.path.isfile(os.path.join(clip_prefix, e)) and os.stat(os.path.join(clip_prefix, e)).st_size != 0]
+clips = [
+    e
+    for e in clips
+    if os.path.isfile(os.path.join(clip_prefix, e))
+    and os.stat(os.path.join(clip_prefix, e)).st_size != 0
+]
 df = df[df["path"].isin(clips)]
 
 print(df.shape)  # 28891

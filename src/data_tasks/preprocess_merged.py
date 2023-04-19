@@ -2,11 +2,10 @@ alphabet = "aábcdeéfghiíjklmnoóöőpqrstuúüűvwxyz"
 
 
 def hungarian_word(strng):
-    isHungarian = True
     for ch in strng:
         if ch not in alphabet:
-            isHungarian = False
-    return isHungarian
+            return False
+    return True
 
 
 with open("data/interim/merged_corpus_cleaned.txt", "w") as outfile:

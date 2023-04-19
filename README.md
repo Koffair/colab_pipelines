@@ -57,3 +57,16 @@ Let's make a smaller, binary version of the LM.
 ```bash
 ../../opt/kenlm/build/bin/build_binary models/lms/hu_kenlm_corrected.arpa models/lms/hu_kenlm.binary
 ```
+
+# TODOs
+WER is high, CER is low. What's the problem?
+Word segmentation is bad.
+
+- ? use model without kenlm ?
+- remove whitespace from output
+- use wordninja to slice words not found in the
+vocabulary aka slice up long words
+- use deep pavlov which splits up
+oo words if it is possible -> is it possible
+to train a Hungarian version of dp????
+- use floret to correct out of vocabulary words

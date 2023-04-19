@@ -13,7 +13,7 @@ df = df[df["down_votes"] == 0]
 clips = df["path"]
 clips = [e for e in clips if os.path.isfile(os.path.join(clip_prefix, e)) and os.stat(os.path.join(clip_prefix, e)).st_size != 0]
 df = df[df["path"].isin(clips)]
-df = df.sample(2000)
+df = df.sample(10)
 df["path"] = [os.path.join(clip_prefix, f) for f in df["path"]]
 
 
@@ -52,4 +52,4 @@ sentences = [e["transcription"] for e in references]
 
 df2 = pd.DataFrame(list(zip(transcriptions, sentences)), columns=["Transcript", "Original"])
 for _, row in df2.iterrows():
-    print(row["Transcirpt"], row["Original"])
+    print(row["Transcript"], row["Original"])

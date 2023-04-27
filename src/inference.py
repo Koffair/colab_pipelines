@@ -40,16 +40,26 @@ decoder = KenshoLMDecoder(model.token_set, lm_path=lm_path, unigrams_path=unigra
 ###############################################################################################
 #####                                evaluation                                           #####
 ###############################################################################################
-evaluation = model.evaluate(references, decoder=decoder)
-
-print(evaluation)
+evaluation_with_decoder = model.evaluate(references, decoder=decoder)
+evaluation_without_decoder = model.evaluate(references)
+print(evaluation_with_decoder)
+print(evaluation_without_decoder)
 ###############################################################################################
 #####                              transcription                                          #####
 ###############################################################################################
-transcriptions = model.transcribe([k["path"] for k in references], decoder=decoder)
-transcriptions = [e["transcription"] for e in transcriptions]
+transcriptions_with_decoder = model.transcribe([k["path"] for k in references], decoder=decoder)
+transcriptions_with_decoder = [e["transcription"] for e in transcriptions_with_decoder]
+
+transcriptions_without_decoder = model.transcribe([k["path"] for k in references])
+transcriptions_without_decoder = [e["transcription"] for e in transcriptions_without_decoder]
+
 sentences = [e["transcription"] for e in references]
 
-df2 = pd.DataFrame(list(zip(transcriptions, sentences)), columns=["Transcript", "Original"])
-for _, row in df2.iterrows():
+df_decoder = pd.DataFrame(list(zip(transcriptions_with_decoder, sentences)), columns=["Transcript", "Original"])
+df_without_decoder = pd.DataFrame(list(zip(transcriptions_without_decoder, sentences)), columns=["Transcript", "Original"])
+
+for _, row in df_decoder.iterrows():
+    print(row["Transcript"], row["Original"])
+
+for _, row in df_without_decoder.iterrows():
     print(row["Transcript"], row["Original"])

@@ -1,8 +1,12 @@
 import os
 
 import pandas as pd
-from huggingsound import (ModelArguments, SpeechRecognitionModel, TokenSet,
-                          TrainingArguments)
+from huggingsound import (
+    ModelArguments,
+    SpeechRecognitionModel,
+    TokenSet,
+    TrainingArguments,
+)
 from nltk.tokenize import word_tokenize
 from sklearn.model_selection import train_test_split
 
@@ -81,7 +85,8 @@ tokens = [
     "u",
     "ú",
     "ü",
-    "ű" "v",
+    "ű",
+    "v",
     "w",
     "x",
     "y",

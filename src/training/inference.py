@@ -1,7 +1,7 @@
 import os
 
 import pandas as pd
-from huggingsound import SpeechRecognitionModel, KenshoLMDecoder
+from huggingsound import KenshoLMDecoder, SpeechRecognitionModel
 from nltk.tokenize import word_tokenize
 
 ###############################################################################################

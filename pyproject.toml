@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "colab-pipelines"
+version = "0.1.0"
+description = ""
+authors = ["Zoltan Varju <zoltan.varju@gmail.com>"]
+readme = "README.md"
+packages = [{include = "colab_pipelines"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.0.3"
+huggingsound = "^0.1.6"
+nltk = "^3.8.1"
+scikit-learn = "^1.3.0"
+pyicu = "^2.11"
+blingfire = "^0.1.8"
+
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.12.0"
+black = "^23.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
